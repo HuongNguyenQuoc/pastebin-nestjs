@@ -1,4 +1,11 @@
-import { Controller, Post, Body, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { CreatePasteDto } from 'src/paste/dto/create-paste.dto';
 import { PasteService } from 'src/paste/paste.service';
 
@@ -7,7 +14,7 @@ export class PasteController {
   constructor(private readonly pasteService: PasteService) {}
 
   @Post()
-  async createPaste(@Body() dto: CreatePasteDto) {
+  async create(@Body() dto: CreatePasteDto) {
     const paste = await this.pasteService.createPaste(
       dto.paste_content,
       dto.expiration_length_in_minutes,
@@ -16,8 +23,11 @@ export class PasteController {
   }
 
   @Get(':shortlink')
-  async getPaste(@Param('shortlink') shortlink: string) {
-
+  async read(@Param('shortlink') shortlink: string) {
+    const result = await this.pasteService.getPaste(shortlink);
+    if (!result) {
+      throw new NotFoundException('Paste not found');
+    }
+    return result;
   }
-
 }

@@ -5,7 +5,7 @@ import { Repository } from 'typeorm';
 import { RedisSerivce } from './cache/redis.service';
 import { Paste } from './paste.entity';
 
-interface PasteResponse {
+export interface PasteResponse {
   paste_content: string;
   created_at: Date;
   expiration_length_in_minutes: number | null;
