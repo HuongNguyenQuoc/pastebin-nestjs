@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ScheduleModule } from '@nestjs/schedule';
-import { PasteModule } from './paste/paste.module';
-import { PasteService } from './paste.service';
-import { PasteController } from './paste.controller';
 import { CleanupModule } from './cleanup/cleanup.module';
+import { PasteController } from './paste.controller';
+import { PasteService } from './paste.service';
 import { PasteModule } from './paste/paste.module';
 
 @Module({
