@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    container_name: pastebin_nest_postgres
+    environment:
+      POSTGRES_USER: pastebin
+      POSTGRES_PASSWORD: pastebin
+      POSTGRES_DB: pastebin
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: redis:7-alpine
+    container_name: pastebin_nest_redis
+    ports:
+      - "6379:6379"
+  
+volumes:
+  pgdata:
