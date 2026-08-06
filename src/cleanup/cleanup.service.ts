@@ -13,7 +13,7 @@ export class CleanupService {
 
   @Cron(CronExpression.EVERY_10_MINUTES)
   async deleteExpiredPastes() {
-    await this.pasteRepo.delete(`
+    await this.pasteRepo.query(`
       DELETE FROM pastes
       WHERE expiration_length_in_minutes IS NOT NULL
       AND created_at + (expiration_length_in_minutes || ' minutes')::interval < NOW()

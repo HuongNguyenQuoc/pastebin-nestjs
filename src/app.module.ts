@@ -5,9 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CleanupModule } from './cleanup/cleanup.module';
-import { PasteController } from './paste/paste.controller';
 import { PasteModule } from './paste/paste.module';
-import { PasteService } from './paste/paste.service';
 
 @Module({
   imports: [
@@ -18,7 +16,7 @@ import { PasteService } from './paste/paste.service';
         type: 'postgres',
         host: config.get<string>('DATABASE_HOST'),
         port: config.get<number>('DATABASE_PORT'),
-        username: config.get<string>('DATABASE_USERNAME'),
+        username: config.get<string>('DATABASE_USER'),
         password: config.get<string>('DATABASE_PASSWORD'),
         database: config.get<string>('DATABASE_NAME'),
         autoLoadEntities: true, // Automatically load entities from the project
@@ -29,7 +27,7 @@ import { PasteService } from './paste/paste.service';
     PasteModule, // Import the PasteModule to handle paste-related functionality
     CleanupModule, // Import the CleanupModule to handle cleanup tasks
   ],
-  controllers: [AppController, PasteController],
-  providers: [AppService, PasteService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
