@@ -5,9 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CleanupModule } from './cleanup/cleanup.module';
-import { PasteService } from './paste/paste.service';
 import { PasteController } from './paste/paste.controller';
 import { PasteModule } from './paste/paste.module';
+import { PasteService } from './paste/paste.service';
 
 @Module({
   imports: [
