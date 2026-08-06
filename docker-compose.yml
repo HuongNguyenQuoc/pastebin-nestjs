@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:16
     container_name: pastebin_nest_postgres
     environment:
       POSTGRES_USER: pastebin
