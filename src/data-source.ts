@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { Paste } from 'src/paste/paste.entity';
+import { Paste } from './paste/paste.entity';
 import { DataSource } from 'typeorm';
 import 'reflect-metadata';
 
